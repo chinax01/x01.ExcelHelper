@@ -1,0 +1,125 @@
+﻿<Window x:Class="x01.ExcelHelper.SplitWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowStartupLocation="CenterScreen"
+	Title="生成免费教材申报清单" Height="310" Width="500">
+		<Window.Resources>
+		<Style TargetType="TextBox" x:Key="ShortBoxKey">
+			<Setter Property="MinWidth" Value="20" />
+			<Setter Property="Margin" Value="5" />
+		</Style>
+		<Style TargetType="TextBox">
+			<Setter Property="Height" Value="20" />
+		</Style>
+		<Style TargetType="Button">
+			<Setter Property="Margin" Value="5" />
+			<Setter Property="Height" Value="20" />
+			<Setter Property="Padding" Value="2" />
+		</Style>
+		<Style TargetType="TextBlock">
+			<Setter Property="Margin" Value="0 5 0 0" />
+			<Setter Property="Height" Value="20" />
+		</Style>
+	</Window.Resources>
+	<Grid Margin="5 10 5 5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right">原始文件:</TextBlock>
+		<TextBox Grid.Row="0" Grid.Column="1" Name="tbxOriginPath" /> 
+		<Button Grid.Row="0" Grid.Column="2" Width="30" Name="OpenOriginButton"
+			Click="OpenOriginButton_Click">…</Button>
+		<StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>原始表1: 表名</TextBlock>
+				<TextBox Name="tbxOriginSheet1Name" MinWidth="40" Margin="5 0" />
+				<TextBlock>起始行</TextBlock>
+				<TextBox Name="tbxOriginSheet1StartRow" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束行</TextBlock>
+				<TextBox Name="tbxOriginSheet1EndRow" Style="{StaticResource ShortBoxKey}" />	
+				<TextBlock>起始列</TextBlock>
+				<TextBox Name="tbxOriginSheet1StartCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束列</TextBlock>
+				<TextBox Name="tbxOriginSheet1EndCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>代码列</TextBlock>
+				<TextBox Name="tbxOriginSheet1CodeCol" Style="{StaticResource ShortBoxKey}" />
+			</StackPanel>
+		<StackPanel Orientation="Horizontal">
+				<TextBlock>原始表2: 表名</TextBlock>
+				<TextBox Name="tbxOriginSheet2Name" MinWidth="40" Margin="5 0" />
+				<TextBlock>起始行</TextBlock>
+				<TextBox Name="tbxOriginSheet2StartRow" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束行</TextBlock>
+				<TextBox Name="tbxOriginSheet2EndRow" Style="{StaticResource ShortBoxKey}" />	
+				<TextBlock>起始列</TextBlock>
+				<TextBox Name="tbxOriginSheet2StartCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束列</TextBlock>
+				<TextBox Name="tbxOriginSheet2EndCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>代码列</TextBlock>
+				<TextBox Name="tbxOriginSheet2CodeCol" Style="{StaticResource ShortBoxKey}" />
+			</StackPanel>
+		</StackPanel>
+		<TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">模板文件:</TextBlock>
+		<TextBox Grid.Row="2" Grid.Column="1" Name="tbxTemplatePath" />
+		<Button Grid.Row="2" Grid.Column="2" Width="30" Name="OpenTemplateButton" 
+		        Click="OpenTemplateButton_Click">…</Button>
+		<StackPanel Grid.Row="3" Grid.ColumnSpan="3">
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>模板表1: 表名</TextBlock>
+				<TextBox Name="tbxTemplateSheet1Name" MinWidth="40" Margin="5 0" />
+				<TextBlock>起始行</TextBlock>
+				<TextBox Name="tbxTemplateSheet1StartRow" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束行</TextBlock>
+				<TextBox Name="tbxTemplateSheet1EndRow" Style="{StaticResource ShortBoxKey}" />	
+				<TextBlock>起始列</TextBlock>
+				<TextBox Name="tbxTemplateSheet1StartCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束列</TextBlock>
+				<TextBox Name="tbxTemplateSheet1EndCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>代码列</TextBlock>
+				<TextBox Name="tbxTemplateSheet1CodeCol" Style="{StaticResource ShortBoxKey}" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>模板表2: 表名</TextBlock>
+				<TextBox Name="tbxTemplateSheet2Name" MinWidth="40" Margin="5 0" />
+				<TextBlock>起始行</TextBlock>
+				<TextBox Name="tbxTemplateSheet2StartRow" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束行</TextBlock>
+				<TextBox Name="tbxTemplateSheet2EndRow" Style="{StaticResource ShortBoxKey}" />	
+				<TextBlock>起始列</TextBlock>
+				<TextBox Name="tbxTemplateSheet2StartCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束列</TextBlock>
+				<TextBox Name="tbxTemplateSheet2EndCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>代码列</TextBlock>
+				<TextBox Name="tbxTemplateSheet2CodeCol" Style="{StaticResource ShortBoxKey}" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock>模板表3: 表名</TextBlock>
+				<TextBox Name="tbxTemplateSheet3Name" MinWidth="40" Margin="5 0" />
+				<TextBlock>起始行</TextBlock>
+				<TextBox Name="tbxTemplateSheet3StartRow" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束行</TextBlock>
+				<TextBox Name="tbxTemplateSheet3EndRow" Style="{StaticResource ShortBoxKey}" />	
+				<TextBlock>起始列</TextBlock>
+				<TextBox Name="tbxTemplateSheet3StartCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>结束列</TextBlock>
+				<TextBox Name="tbxTemplateSheet3EndCol" Style="{StaticResource ShortBoxKey}" />
+				<TextBlock>代码列</TextBlock>
+				<TextBox Name="tbxTemplateSheet3CodeCol" Style="{StaticResource ShortBoxKey}" />
+			</StackPanel>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Right" Orientation="Horizontal">
+			<Button HorizontalAlignment="Right" 
+		        Name="GenerateFilesButton" Margin="0 10 5 0" Height="32"
+				Click="GenerateFilesButton_Click">_Generate Files</Button>
+		</StackPanel>
+	</Grid>
+</Window>
