@@ -599,6 +599,18 @@ namespace x01.ExcelHelper
 				var fs = new FileStream(Path.Combine(Path.GetDirectoryName(TemplatePath), name + ".xls"),FileMode.Create);
 				destBook.Write(fs);
 				fs.Close();
+				ClearSheet(ref dest, destStartRow, destEndRow, destStartCol, destEndCol);
+			}
+		}
+		
+		void ClearSheet(ref ISheet sheet, int startRow, int endRow, int startCol, int endCol)
+		{
+			for (int row = startRow-1; row < endRow; row++) {
+				for (int col = startCol-1; col < endCol; col++) {
+					var cell = sheet.GetRow(row).GetCell(col);
+					if (cell == null) continue;
+					cell.SetCellType(CellType.Blank);
+				}
 			}
 		}
 		
