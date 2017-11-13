@@ -581,19 +581,28 @@ namespace x01.ExcelHelper
 					}
 				}
 				
-				var orders = categories.Where(c=>c.SellMethod == "非免").OrderBy(c => c.Category);
+				var filters = categories.Where(c=>c.SellMethod == "非免");
+				var groups = filters.GroupBy(c=>c.Category);
 				int dr = destStartRow -1;
-				foreach (var m in orders) {
-					dest.GetRow(dr).GetCell(0).SetCellValue(m.SellNr);
-					dest.GetRow(dr).GetCell(1).SetCellValue(m.SellMethod);
-					dest.GetRow(dr).GetCell(2).SetCellValue(m.ClientId);
-					dest.GetRow(dr).GetCell(3).SetCellValue(m.ClientName);
-					dest.GetRow(dr).GetCell(4).SetCellValue(m.TypeNr);
-					dest.GetRow(dr).GetCell(5).SetCellValue(m.Number);
-					dest.GetRow(dr).GetCell(6).SetCellValue(m.Total);
-					dest.GetRow(dr).GetCell(7).SetCellValue(m.Category);
+				foreach (var g in groups) {
+					foreach (var c in g) {
+						dest.GetRow(dr).GetCell(0).SetCellValue(c.SellNr);
+						dest.GetRow(dr).GetCell(1).SetCellValue(c.SellMethod);
+						dest.GetRow(dr).GetCell(2).SetCellValue(c.ClientId);
+						dest.GetRow(dr).GetCell(3).SetCellValue(c.ClientName);
+						dest.GetRow(dr).GetCell(4).SetCellValue(c.TypeNr);
+						dest.GetRow(dr).GetCell(5).SetCellValue(c.Number);
+						dest.GetRow(dr).GetCell(6).SetCellValue(c.Total);
+						dest.GetRow(dr).GetCell(7).SetCellValue(c.Category);
+						dr++;
+					}
+					dest.GetRow(dr).GetCell(5).SetCellValue(g.Sum(c=>c.Number));
+					dest.GetRow(dr).GetCell(6).SetCellValue(g.Sum(c=>c.Total));
+					dest.GetRow(dr).GetCell(3).SetCellValue(g.First().Category + "小计");
 					dr++;
 				}
+				dest.GetRow(destEndRow+1).GetCell(5).SetCellValue(filters.Sum(c=>c.Number));
+				dest.GetRow(destEndRow+1).GetCell(6).SetCellValue(filters.Sum(c=>c.Total));
 				
 				dest.ForceFormulaRecalculation = true;
 				var fs = new FileStream(Path.Combine(Path.GetDirectoryName(TemplatePath), name + ".xls"),FileMode.Create);
