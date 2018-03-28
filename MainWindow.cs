@@ -192,12 +192,12 @@ namespace x01.ExcelHelper
 		
 		void GenerateButton_Click(object sender, RoutedEventArgs e)
 		{
-			new SplitWindow().ShowDialog();
+			new GenerateFreeSheetWindow().ShowDialog();
 		}
 		
 		void CategoryButton_Click(object sender, RoutedEventArgs e)
 		{
-			new CatelogWindow().ShowDialog();
+			new FillSellCatelogWindow().ShowDialog();
 		}
 		
 	}

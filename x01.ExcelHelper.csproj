@@ -80,8 +80,8 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CatelogWindow.xaml.cs">
-      <DependentUpon>CatelogWindow.xaml</DependentUpon>
+    <Compile Include="FillSellCatelogWindow.xaml.cs">
+      <DependentUpon>FillSellCatelogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExcelModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,21 +90,38 @@
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SplitWindow.xaml.cs">
-      <DependentUpon>SplitWindow.xaml</DependentUpon>
+    <Compile Include="GenerateFreeSheetWindow.xaml.cs">
+      <DependentUpon>GenerateFreeSheetWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CatelogWindow.xaml" />
+    <Page Include="FillSellCatelogWindow.xaml" />
     <Page Include="MainWindow.xaml" />
-    <Page Include="SplitWindow.xaml" />
+    <Page Include="GenerateFreeSheetWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Data\免费申报\T.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\免费申报\原始.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\销售\Org.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\销售\Temp.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data" />
+    <Folder Include="Data\免费申报" />
+    <Folder Include="Data\销售" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
